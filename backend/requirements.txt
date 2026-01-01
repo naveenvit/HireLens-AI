@@ -4,9 +4,8 @@ python-multipart
 pydantic
 pymongo
 python-dotenv
-spacy
+spacy>=3.7,<3.8
 openai
 pdfplumber
 python-docx
 reportlab
-en-core-web-sm==3.7.1
