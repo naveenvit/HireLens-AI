@@ -1,6 +1,6 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
-export async function uploadResume(file) {
+export const uploadResume = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
 
@@ -10,7 +10,7 @@ export async function uploadResume(file) {
   });
 
   return res.json();
-}
+};
 
 export async function fullAnalysis(resumeSkills, jobSkills) {
   const res = await fetch(`${API_BASE}/analysis/full-analysis`, {
