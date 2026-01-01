@@ -9,3 +9,4 @@ openai
 pdfplumber
 python-docx
 reportlab
+en-core-web-sm==3.7.1
