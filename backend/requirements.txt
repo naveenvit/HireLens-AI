@@ -5,3 +5,4 @@ python-multipart
 reportlab
 openai
 pdfplumber
+python-docx
