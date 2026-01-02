@@ -1,30 +1,21 @@
-import spacy
+import re
 
-nlp = spacy.load("en_core_web_sm")
-
-SKILL_SET = {
-    "python", "java", "c++", "javascript",
-    "react", "node", "fastapi", "django",
-    "html", "css", "tailwind",
-    "mongodb", "mysql", "postgresql",
+SKILL_KEYWORDS = [
+    "python", "java", "javascript", "react", "node",
+    "fastapi", "django", "flask",
     "aws", "docker", "kubernetes",
-    "machine learning", "deep learning",
-    "nlp", "data analysis",
-    "git", "github", "rest api"
-}
-def extract_skills(text: str) -> list:
-    doc = nlp(text)
+    "mongodb", "mysql", "postgresql",
+    "git", "github", "linux",
+    "html", "css", "tailwind"
+]
+
+def extract_skills(text: str):
+    text = text.lower()
     found_skills = set()
 
-    # Check single tokens
-    for token in doc:
-        if token.text in SKILL_SET:
-            found_skills.add(token.text)
-
-    # Check multi-word skills
-    for chunk in doc.noun_chunks:
-        chunk_text = chunk.text.strip()
-        if chunk_text in SKILL_SET:
-            found_skills.add(chunk_text)
+    for skill in SKILL_KEYWORDS:
+        pattern = r"\b" + re.escape(skill) + r"\b"
+        if re.search(pattern, text):
+            found_skills.add(skill)
 
     return sorted(found_skills)
