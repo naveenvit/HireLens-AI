@@ -1,3 +1,5 @@
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
 import ScoreCard from "../components/ScoreCard";
 import SkillMatch from "../components/SkillMatch";
 
@@ -22,7 +24,7 @@ export default function Result({ data, resumeSkills, jobSkills }) {
 <button
   onClick={async () => {
     const res = await fetch(
-      "http://127.0.0.1:8000/analysis/download-report",
+      `${API_BASE}/analysis/download-report`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
