@@ -1,3 +1,5 @@
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
 import { useState } from "react";
 import UploadResume from "../components/UploadResume";
 import JobDescription from "../components/JobDescription";
@@ -31,7 +33,7 @@ setResumeSkills(resumeRes.skills);
 
       // 2️⃣ Extract job skills
       const jobSkillsRes = await fetch(
-        `http://127.0.0.1:8000/analysis/job-skills?job_description=${encodeURIComponent(jobDesc)}`,
+        `${API_BASE}/analysis/job-skills?job_description=${encodeURIComponent(jobDesc)}`,
         { method: "POST" }
       );
 
